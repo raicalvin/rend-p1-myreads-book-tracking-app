@@ -16,39 +16,16 @@ class Select extends Component {
   render() {
     return (
       <select
-        onChange={
-          // console.log(this.props.from)
-          e => {
-            this.props.from === "BooksPage"
-              ? this.props.onBookChange(
-                  e.target.value,
-                  this.state.bookName,
-                  this.state.bookId,
-                  this.props.obj
-                )
-              : this.props.onBookAdd(e.target.value, this.props.obj);
-          }
-          // e =>
-          //   this.props.onBookChange(
-          //     e.target.value,
-          //     this.state.bookName,
-          //     this.state.bookId,
-          //     this.props.obj
-          //   )
-          // function(e) {
-          //   console.log(this.props.from);
-          //   if (this.props.from === "SearchPage") {
-          //     this.props.onBookAdd();
-          //   } else {
-          //     this.props.onBookChange(
-          //       e.target.value,
-          //       this.state.bookName,
-          //       this.state.bookId,
-          //       this.props.obj
-          //     );
-          //   }
-          // }
-        }
+        onChange={e => {
+          this.props.from === "BooksPage"
+            ? this.props.onBookChange(
+                e.target.value,
+                this.state.bookName,
+                this.state.bookId,
+                this.props.obj
+              )
+            : this.props.onBookAdd(e.target.value, this.props.obj);
+        }}
         value={this.props.shelf}
       >
         <option value="move" disabled>
@@ -337,9 +314,6 @@ class SearchPage extends Component {
 ========== PARENT MAIN Page ===========
 */
 class BooksApp extends Component {
-  // TODO: Make a 2 large-scale components: one for the Main Page and one for the Search Page
-  // You'll use a Router later on to route between these two components
-
   state = {
     showSearchPage: false
   };
@@ -362,30 +336,3 @@ class BooksApp extends Component {
 }
 
 export default BooksApp;
-
-/* ==================== ORIGINAL CODE BELOW ===================== */
-
-// class BooksApp extends Component {
-//   // TODO: Make a 2 large-scale components: one for the Main Page and one for the Search Page
-//   // You'll use a Router later on to route between these two components
-
-//   state = {
-//     /**
-//      * TODO: Instead of using this state variable to keep track of which page
-//      * we're on, use the URL in the browser's address bar. This will ensure that
-//      * users can use the browser's back and forward buttons to navigate between
-//      * pages, as well as provide a good URL they can bookmark and share.
-//      */
-//     showSearchPage: false
-//   };
-
-//   render() {
-//     return (
-//       <div className="app">
-//         {this.state.showSearchPage ? <SearchPage /> : <BooksPage />}
-//       </div>
-//     );
-//   }
-// }
-
-// export default BooksApp;
